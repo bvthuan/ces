@@ -68,6 +68,29 @@ namespace CES.Database.Migrations
                     );
                 });
 
+            modelBuilder.Entity("CES.Database.Models.GoodType", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Code");
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("GoodTypes");
+
+                    b.HasData(
+                        new { Id = 1L, Code = "RED", Name = "Recorded Delivery" },
+                        new { Id = 2L, Code = "WEA", Name = "Weapons" },
+                        new { Id = 3L, Code = "LIA", Name = "Live Animals" },
+                        new { Id = 4L, Code = "CAP", Name = "Cautious Parcels" },
+                        new { Id = 5L, Code = "REF", Name = "Refrigerated Goods" }
+                    );
+                });
+
             modelBuilder.Entity("CES.Database.Models.Route", b =>
                 {
                     b.Property<long>("Id")
@@ -134,7 +157,7 @@ namespace CES.Database.Migrations
                         new { Id = 47L, Destination = "SLA", NumberOfSegments = 7, Start = "DAR" },
                         new { Id = 48L, Destination = "LUA", NumberOfSegments = 3, Start = "CON" },
                         new { Id = 49L, Destination = "DAR", NumberOfSegments = 6, Start = "CON" },
-                        new { Id = 50L, Destination = "WAI", NumberOfSegments = 6, Start = "CON" },
+                        new { Id = 50L, Destination = "WAD", NumberOfSegments = 6, Start = "CON" },
                         new { Id = 51L, Destination = "SLA", NumberOfSegments = 5, Start = "CON" },
                         new { Id = 52L, Destination = "CAI", NumberOfSegments = 4, Start = "OMD" },
                         new { Id = 53L, Destination = "DAR", NumberOfSegments = 3, Start = "OMD" },
@@ -167,7 +190,8 @@ namespace CES.Database.Migrations
                         new { Id = 80L, Destination = "VIS", NumberOfSegments = 5, Start = "ZAN" },
                         new { Id = 81L, Destination = "VIF", NumberOfSegments = 3, Start = "DRA" },
                         new { Id = 82L, Destination = "MOC", NumberOfSegments = 4, Start = "DRA" },
-                        new { Id = 83L, Destination = "LUA", NumberOfSegments = 11, Start = "DRA" }
+                        new { Id = 83L, Destination = "LUA", NumberOfSegments = 11, Start = "DRA" },
+                        new { Id = 84L, Destination = "KAP", NumberOfSegments = 4, Start = "HVA" }
                     );
                 });
 
@@ -177,13 +201,20 @@ namespace CES.Database.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("MaxiumWeight");
+                    b.Property<string>("Key");
 
-                    b.Property<string>("PriceBetweenTwoSegments");
+                    b.Property<string>("Value");
 
                     b.HasKey("Id");
 
                     b.ToTable("RouteConfigurations");
+
+                    b.HasData(
+                        new { Id = 1L, Key = "PriceBetweenTwoSegments", Value = "3" },
+                        new { Id = 2L, Key = "MaxiumWeight", Value = "40" },
+                        new { Id = 3L, Key = "ShipProviderURL", Value = "" },
+                        new { Id = 4L, Key = "AirProviderURL", Value = "" }
+                    );
                 });
 
             modelBuilder.Entity("CES.Database.Models.User", b =>
