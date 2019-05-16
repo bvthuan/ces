@@ -6,7 +6,7 @@ namespace CES.Model
 {
 	public class PublicRouteModel
 	{
-		public String From_city { get; set; }
+		public string From_city { get; set; }
 
 		public string To_city { get; set; }
 

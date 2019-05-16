@@ -37,16 +37,43 @@ namespace CES.Services
 
 		public async Task<List<RouteResponseModel>> FindRoute(RouteRequestModel request)
 		{
-			//Get all routes from database
-			var routeData = await _context.Routes.ToListAsync();
 			//If we dont have data for Air / Ship, use External API to get them
-			//Continue get all routes data from database
+			if (!_context.Routes.Any(r => r.Transportation == (int)Transportation.Airborne))
+			{
+				await _airProvider.GetRoutes();
+			}
+
+			if (!_context.Routes.Any(r => r.Transportation == (int)Transportation.Ship))
+			{
+				await _shipProvider.GetRoutes();
+			}
+
+			var requestModel = new List<PublicRouteRequestModel>() {
+				new PublicRouteRequestModel
+				{
+					goodsType = request.PackageType,
+					height = request.PackageSizes.Height,
+					length = request.PackageSizes.Length,
+					weight = request.PackageSizes.Weight,
+					width = request.PackageSizes.Width
+				} };
+			//Get all routes from database
+			var airPrice = await _airProvider.GetPrice(requestModel);
+
+			var shipPrice = await _shipProvider.GetPrice(requestModel);
+			var routeData = await _context.Routes.ToListAsync();
+
+			if (airPrice < 0)
+				routeData = routeData.Where(r => r.Transportation != (int)Transportation.Airborne).ToList();
+
+			if (shipPrice < 0)
+				routeData = routeData.Where(r => r.Transportation != (int)Transportation.Ship).ToList();
 
 			//Parse them to Route Model
 			var routes = new List<RouteModel>();
 			var config = await _context.RouteConfigurations.FirstAsync(rg => rg.Key == "TimeBetweenTwoSegments");
 			var configPrice = await _context.RouteConfigurations.FirstAsync(rg => rg.Key == "PriceBetweenTwoSegments");
-			var price = Int32.Parse(config.Value); //use second External API to get them
+
 			foreach (var item in routeData)
 			{
 				routes.Add(new RouteModel
@@ -60,11 +87,13 @@ namespace CES.Services
 					Transportation = (Transportation)item.Transportation,
 					Price = item.Transportation == (int)Transportation.Car
 						? item.NumberOfSegments * Int32.Parse(configPrice.Value)
-						: item.NumberOfSegments * price,
+						: item.Transportation == (int)Transportation.Ship
+							? item.NumberOfSegments * shipPrice
+							: item.NumberOfSegments * airPrice,
 				});
 			}
-			
-			
+
+
 			var nodes = routes.Parse(request.TransportType);
 
 

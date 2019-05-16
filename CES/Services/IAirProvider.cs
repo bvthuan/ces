@@ -9,7 +9,7 @@ namespace CES.Services
 {
 	public interface IAirProvider
 	{
-		// methods below will be used for communicating to external service
-        // @TODO: Mike will define the method
+		Task GetRoutes();
+		Task<decimal> GetPrice(List<PublicRouteRequestModel> request);
 	}
 }
