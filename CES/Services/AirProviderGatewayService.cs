@@ -26,7 +26,7 @@ namespace CES.Services
 
         private string GetEndPoint()
         {
-            var endpoint = _context.RouteConfigurations.FirstOrDefault(c => c.Key == AppConstant.SHIP_PROVIDER_URL);
+            var endpoint = _context.RouteConfigurations.FirstOrDefault(c => c.Key == AppConstant.AIR_PROVIDER_GET_PRICE_URL);
             return endpoint.Value;
         }
 

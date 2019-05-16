@@ -148,13 +148,17 @@ namespace CES.Database.Context
 			// insert RouteConfiguration
 			modelBuilder.Entity<RouteConfiguration>().HasData(new RouteConfiguration { Id = 1, Key = "PriceBetweenTwoSegments", Value = "3" });
 			modelBuilder.Entity<RouteConfiguration>().HasData(new RouteConfiguration { Id = 2, Key = "MaxiumWeight", Value = "40" });
-			modelBuilder.Entity<RouteConfiguration>().HasData(new RouteConfiguration { Id = 3, Key = "ShipProviderURL", Value = "" });
-			modelBuilder.Entity<RouteConfiguration>().HasData(new RouteConfiguration { Id = 4, Key = "AirProviderURL", Value = "" });
+			modelBuilder.Entity<RouteConfiguration>().HasData(new RouteConfiguration { Id = 3, Key = "ShipProviderGetRoutesURL", Value = "" });
+			modelBuilder.Entity<RouteConfiguration>().HasData(new RouteConfiguration { Id = 4, Key = "AirProviderGetRoutesURL", Value = "" });
 			modelBuilder.Entity<RouteConfiguration>().HasData(new RouteConfiguration { Id = 5, Key = "TimeBetweenTwoSegments", Value = "4" });
 
-			//modelBuilder.Entity<GoodType>().HasData(new GoodType { Id = 1, Code = "AirProviderURL", Name = "" });
+            modelBuilder.Entity<RouteConfiguration>().HasData(new RouteConfiguration { Id = 6, Key = "ShipProviderGetPrieURL", Value = "" });
+            modelBuilder.Entity<RouteConfiguration>().HasData(new RouteConfiguration { Id = 7, Key = "AirProviderGetPriceURL", Value = "" });
 
-			modelBuilder.Entity<GoodType>().HasData(new GoodType { Id = 1, Code = "RED", Name = "Recorded Delivery" });
+
+            //modelBuilder.Entity<GoodType>().HasData(new GoodType { Id = 1, Code = "AirProviderURL", Name = "" });
+
+            modelBuilder.Entity<GoodType>().HasData(new GoodType { Id = 1, Code = "RED", Name = "Recorded Delivery" });
 			modelBuilder.Entity<GoodType>().HasData(new GoodType { Id = 2, Code = "WEA", Name = "Weapons" });
 			modelBuilder.Entity<GoodType>().HasData(new GoodType { Id = 3, Code = "LIA", Name = "Live Animals" });
 			modelBuilder.Entity<GoodType>().HasData(new GoodType { Id = 4, Code = "CAP", Name = "Cautious Parcels" });

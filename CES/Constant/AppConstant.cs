@@ -13,9 +13,11 @@ namespace CES.Constant
 
         public static String MAXIUM_WEIGHT = "MaxiumWeight";
 
-        public static String SHIP_PROVIDER_URL = "ShipProviderURL";
+        public static String SHIP_PROVIDER_GET_ROUTE_URL = "ShipProviderGetRoutesURL";
+        public static String SHIP_PROVIDER_GET_PRICE_URL = "ShipProviderGetPrieURL";
 
-        public static String AIR_PROVIDER_URL = "ShipProviderURL";
+        public static String AIR_PROVIDER_GET_ROUTE_URL = "AirProviderGetRoutesURL";
+        public static String AIR_PROVIDER_GET_PRICE_URL = "AirProviderGetPriceURL";
 
     }
 }
