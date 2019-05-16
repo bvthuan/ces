@@ -151,6 +151,8 @@ namespace CES.Database.Context
             modelBuilder.Entity<RouteConfiguration>().HasData(new RouteConfiguration { Id = 3, Key = "ShipProviderURL", Value = "" });
             modelBuilder.Entity<RouteConfiguration>().HasData(new RouteConfiguration { Id = 4, Key = "AirProviderURL", Value = "" });
 
+            modelBuilder.Entity<RouteConfiguration>().HasData(new RouteConfiguration { Id = 5, Key = "HourBetweenTwoSegments", Value = "4" });
+
             //modelBuilder.Entity<GoodType>().HasData(new GoodType { Id = 1, Code = "AirProviderURL", Name = "" });
 
             modelBuilder.Entity<GoodType>().HasData(new GoodType { Id = 1, Code = "RED", Name = "Recorded Delivery" });

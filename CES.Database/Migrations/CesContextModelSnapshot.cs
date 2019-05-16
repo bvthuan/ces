@@ -213,7 +213,8 @@ namespace CES.Database.Migrations
                         new { Id = 1L, Key = "PriceBetweenTwoSegments", Value = "3" },
                         new { Id = 2L, Key = "MaxiumWeight", Value = "40" },
                         new { Id = 3L, Key = "ShipProviderURL", Value = "" },
-                        new { Id = 4L, Key = "AirProviderURL", Value = "" }
+                        new { Id = 4L, Key = "AirProviderURL", Value = "" },
+                        new { Id = 5L, Key = "HourBetweenTwoSegments", Value = "4" }
                     );
                 });
 
