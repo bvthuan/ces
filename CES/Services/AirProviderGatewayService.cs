@@ -1,4 +1,5 @@
-﻿using System.Net.Http;
+﻿using CES.Database.Context;
+using System.Net.Http;
 
 namespace CES.Services
 {
@@ -9,6 +10,12 @@ namespace CES.Services
      **/ 
 	public class AirProviderGatewayService : IAirProvider
 	{
+        // db context
+        private CesContext _context;
 
+        public AirProviderGatewayService(CesContext context)
+        {
+            _context = context;
+        }
     }
 }

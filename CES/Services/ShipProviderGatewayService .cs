@@ -1,4 +1,5 @@
-﻿using System.Net.Http;
+﻿using CES.Database.Context;
+using System.Net.Http;
 
 
 namespace CES.Services
@@ -10,6 +11,12 @@ namespace CES.Services
      **/
     public class ShipProviderGatewayService : IShipProvider
 	{
+        // db context
+        private CesContext _context;
 
+        public ShipProviderGatewayService(CesContext context)
+        {
+            _context = context;
+        }
     }
 }
