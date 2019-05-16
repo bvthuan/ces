@@ -10,6 +10,10 @@ namespace CES.Services
 	public interface IRouteConfiguration
     {
 		Task<List<RouteConfiguration>> RouteConfigurations();
-		
-	}
+
+        int getPriceBetweenTwoSegments();
+
+        int getHourBetweenTwoSegments();
+
+    }
 }
