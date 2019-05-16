@@ -57,5 +57,23 @@ namespace CES.Services
 
             return priceBetweenTwoSegments;
         }
+
+        public String getProviderURL(String provider)
+        {
+            List<RouteConfiguration> routeConfigurations = _context.RouteConfigurations.ToList();
+
+            String providerURL = "";
+
+            foreach (var config in routeConfigurations)
+            {
+                if (provider.Equals(config.Key))
+                {
+                    providerURL = config.Value;
+                    break;
+                }
+            }
+
+            return providerURL;
+        }
     }
 }
