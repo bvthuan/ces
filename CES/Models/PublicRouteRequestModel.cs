@@ -14,7 +14,7 @@ namespace CES.Model
 
         public int length { get; set; }
 
-        public int goodType { get; set; }
+        public String goodsType { get; set; }
     }
 
 }
