@@ -1,5 +1,7 @@
 ﻿using CES.Database.Models;
 using CES.Model;
+using CES.Model.Request;
+using CES.Model.Response;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +11,6 @@ namespace CES.Services
 {
 	public interface IRoute
 	{
-		
+		List<RouteResponseModel> FindRoute(RouteRequestModel request);
 	}
 }
