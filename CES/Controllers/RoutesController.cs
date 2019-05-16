@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CES.Enums;
 using CES.Model.Request;
 using CES.Model.Response;
 using Microsoft.AspNetCore.Mvc;
@@ -28,25 +29,35 @@ namespace CES.Controllers
             var routes = new List<RouteResponseModel>() {
                 new RouteResponseModel()
                 {
-                    Start = "Ho chi minh",
-                    Destination = "Ha noi",
+                    Start = route.Start,
+                    Destination = route.Destination,
                     Price = 3,
                     StartDate = new DateTime(),
                     Time = 20, // in hours
-                    Transportation = Enums.Transportation.Car
+                    Transportation = Enums.Transportation.Car.ToString()
                 },
                 new RouteResponseModel()
                 {
-                    Start = "Ho chi minh",
-                    Destination = "Ha noi",
+                    Start = route.Start,
+                    Destination = route.Destination,
                     Price = 10,
                     StartDate = new DateTime(),
                     Time = 4, // in hours
-                    Transportation = Enums.Transportation.Airborne
+                    Transportation = Enums.Transportation.Airborne.ToString()
                 },
             };
+
+            var suggestion = new List<RouteResponseModel>();
+
+            if (route.TransportType == TransportType.Fastest)
+            {
+                suggestion.Add(routes[1]);
+            } else
+            {
+                suggestion.Add(routes[0]);
+            }
             
-            return Ok(routes);
+            return Ok(suggestion);
         }
 
     }

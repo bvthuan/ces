@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CES.Enums;
+using System;
 
 namespace CES.Model.Request
 {
@@ -7,6 +8,8 @@ namespace CES.Model.Request
 		public string Start { get; set; }
 
 		public string Destination { get; set; }
+
+        public TransportType TransportType { get; set; }
 
     }
 }

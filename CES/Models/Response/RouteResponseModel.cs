@@ -12,7 +12,7 @@ namespace CES.Model.Response
 
         public string Destination { get; set; }
 
-        public Transportation Transportation { get; set; }
+        public string Transportation { get; set; }
 
         public DateTime StartDate { get; set; }
 
