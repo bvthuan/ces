@@ -31,7 +31,8 @@ namespace CES.Controllers
 
         // GET: api/Users
         [HttpGet]
-        public IEnumerable<User> GetUsers()
+		[AllowAnonymous]
+		public IEnumerable<User> GetUsers()
         {
             return _context.Users;
         }
