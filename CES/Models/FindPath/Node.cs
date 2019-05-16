@@ -8,7 +8,7 @@ namespace CES.Models.FindPath
 {
 	public class Node
 	{
-		public Guid Id { get; set; }
+		public long Id { get; set; }
 		public string Name { get; set; }
 		public List<Edge> Connections { get; set; } = new List<Edge>();
 		public decimal? MinCostToStart { get; set; }
@@ -17,6 +17,7 @@ namespace CES.Models.FindPath
 		public bool Visited { get; set; }
 		public double StraightLineDistanceToEnd { get; set; }
 		public bool IsEnd { get; set; }
+		public Transportation Transportation { get; set; }
 		public override string ToString()
 		{
 			return Name;
@@ -45,6 +46,7 @@ namespace CES.Models.FindPath
 
 	public class RouteModel
 	{
+		public long Id { get; set; }
 		public string Start { get; set; }
 		public string Destination { get; set; }
 		public int NumberOfSegments { get; set; }

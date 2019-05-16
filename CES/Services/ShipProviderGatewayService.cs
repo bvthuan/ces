@@ -84,91 +84,38 @@ namespace CES.Services
 
 		public async Task<decimal> GetPrice(List<PublicRouteRequestModel> request)
 		{
-			try
 			{
-				using (var client = new HttpClient())
+				HttpClient httpClient = new HttpClient();
+
+				List<PublicRouteRequestModel> modelList = new List<PublicRouteRequestModel>
 				{
-					//client.BaseAddress = new Uri("http://wa-eitvn.azurewebsites.net");
-					//var response = client.PostAsJsonAsync("/index.php?r=api/price", request).Result;
-					//if (response.IsSuccessStatusCode)
-					//{
-					//	var dataObjects = response.Content.ReadAsAsync<IEnumerable<PublicRouteResponsetModel>>().Result;
-					//	var firstItem = dataObjects.FirstOrDefault();
-
-					//	if (firstItem != null && firstItem.status == 1)
-					//	{
-					//		return firstItem.price;
-					//	}
-					//}
-
-					//return 0;
-
-
-					//var values = new Dictionary<string, string> {
-					//	{ "goodsType", request.First().goodsType },
-					//	{ "height", request.First().height.ToString() },
-					//	{ "length", request.First().length.ToString() },
-					//	{ "weight", request.First().weight.ToString() },
-					//	{ "width", request.First().width.ToString() }
-					//};
-
-
-
-					//List<KeyValuePair<string, string>> bodyProperties = new List<KeyValuePair<string, string>>();
-
-					////Add 'single' parameters
-					//bodyProperties.Add(new KeyValuePair<string, string>("goodsType", request.First().goodsType));
-					//bodyProperties.Add(new KeyValuePair<string, string>("height", request.First().height.ToString()));
-					//bodyProperties.Add(new KeyValuePair<string, string>("length", request.First().length.ToString()));
-					//bodyProperties.Add(new KeyValuePair<string, string>("weight", request.First().weight.ToString()));
-					//bodyProperties.Add(new KeyValuePair<string, string>("width", request.First().width.ToString()));
-
-					//var content = new FormUrlEncodedContent(request.ToArray());
-
-					//var response = await client.PostAsync("http://wa-eitvn.azurewebsites.net/index.php?r=api/price", content);
-
-					//var responseString = await response.Content.ReadAsStringAsync();
-
-					//if (response.IsSuccessStatusCode)
-					//{
-					//	var dataObjects = response.Content.ReadAsAsync<IEnumerable<PublicRouteResponsetModel>>().Result;
-					//	var firstItem = dataObjects.FirstOrDefault();
-
-					//	if (firstItem != null && firstItem.status == 1)
-					//	{
-					//		return firstItem.price;
-					//	}
-					//}
-
-					//return 0;
-
-
-					string URI = string.Format("http://wa-eitvn.azurewebsites.net/index.php?r=api/price");
-
-					var serializedProduct = JsonConvert.SerializeObject(request); //num is an array of integers
-					var content = new StringContent(serializedProduct, Encoding.UTF8, "application/json");
-					var result = await client.PostAsync(URI, content);
-
-					var responseString = await result.Content.ReadAsStringAsync();
-
-					if (result.IsSuccessStatusCode)
+					new PublicRouteRequestModel()
 					{
-						var dataObjects = await result.Content.ReadAsAsync<IEnumerable<PublicRouteResponsetModel>>();
-						var firstItem = dataObjects.FirstOrDefault();
-
-						if (firstItem != null && firstItem.status == 1)
-						{
-							return firstItem.price;
-						}
+						goods_type = request.First().goods_type,
+						height = request.First().height,
+						weight = request.First().weight,
+						length = request.First().length,
+						width = request.First().width
 					}
-					return 0;
+				};
+
+				string jsonData = JsonConvert.SerializeObject(modelList);
+
+				var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+				var result = httpClient.PostAsync("http://wa-eitvn.azurewebsites.net/index.php?r=api/price", content).Result;
+				
+				var response = result.Content.ReadAsStringAsync().Result;
+				
+				var dataObjects = JsonConvert.DeserializeObject<List<PublicRouteResponsetModel>>(response);
+				var firstItem = dataObjects.FirstOrDefault();
+
+				if (firstItem != null && firstItem.status == 1)
+				{
+					return firstItem.price;
 				}
 			}
-			catch (Exception EX)
-			{
+			return 0;
 
-				throw;
-			}
 		}
 	}
 }

@@ -18,9 +18,9 @@ namespace CES.Extension
 			var Nodes = new List<Node>();
 			foreach (var item in Routes)
 			{
-				if (Nodes.Any(n => n.Name == item.Start)) continue;
+				if (Nodes.Any(n => n.Name == item.Start && n.Transportation == item.Transportation)) continue;
 
-				var node = new Node() { Name = item.Start };
+				var node = new Node() { Id = item.Id, Name = item.Start };
 				Nodes.Add(node);
 			}
 

@@ -1,4 +1,5 @@
-﻿using CES.Models.FindPath;
+﻿using CES.Enums;
+using CES.Models.FindPath;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,9 +13,9 @@ namespace CES.Models
 		public Node End { get; set; }
 		public double ShortestPathLength { get; set; }
 		public double ShortestPathCost { get; private set; }
-		public List<Node> GetShortestPathDijkstra(string desName)
+		public List<Node> GetShortestPathDijkstra(string desName, TransportType type)
 		{
-			var end = DijkstraSearch(desName);
+			var end = DijkstraSearch(desName, type);
 			var shortestPath = new List<Node>();
 
 			shortestPath.Add(end);
@@ -31,7 +32,7 @@ namespace CES.Models
 			BuildShortestPath(list, node.NearestToStart);
 		}
 
-		private Node DijkstraSearch(string desName)
+		private Node DijkstraSearch(string desName, TransportType type)
 		{
 			var result = new Node();
 			Start.MinCostToStart = 0;
@@ -42,7 +43,10 @@ namespace CES.Models
 				prioQueue = prioQueue.OrderBy(x => x.MinCostToStart).ToList();
 				var node = prioQueue.First();
 				prioQueue.Remove(node);
-				foreach (var cnn in node.Connections.OrderBy(x => x.Cost))
+				var data = type == TransportType.Cheapest
+					? node.Connections.OrderBy(x => x.Price)
+					: node.Connections.OrderBy(x => x.Time);
+				foreach (var cnn in data)
 				{
 					var childNode = cnn.ConnectedNode;
 					if (childNode.Visited)

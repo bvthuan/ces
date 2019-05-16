@@ -63,10 +63,10 @@ namespace CES.Services
 			var shipPrice = 0;// await _shipProvider.GetPrice(requestModel);
 			var routeData = await _context.Routes.ToListAsync();
 
-			if (airPrice < 0)
+			if (airPrice <= 0)
 				routeData = routeData.Where(r => r.Transportation != (int)Transportation.Airborne).ToList();
 
-			if (shipPrice < 0)
+			if (shipPrice <= 0)
 				routeData = routeData.Where(r => r.Transportation != (int)Transportation.Ship).ToList();
 
 			//Parse them to Route Model
@@ -78,6 +78,7 @@ namespace CES.Services
 			{
 				routes.Add(new RouteModel
 				{
+					Id = item.Id,
 					Destination = item.Destination,
 					Start = item.Start,
 					NumberOfSegments = item.NumberOfSegments,
@@ -99,12 +100,15 @@ namespace CES.Services
 
 			Solution solution = new Solution();
 			solution.Start = nodes.GetNode(request.Start);
-			var foundRoutes = solution.GetShortestPathDijkstra(request.Destination);
+			var foundRoutes = solution.GetShortestPathDijkstra(request.Destination, request.TransportType);
 			var result = new List<RouteResponseModel>();
 
 			for (int i = 0; i < foundRoutes.Count - 1; i++)
 			{
-				var edge = foundRoutes[i].Connections.FirstOrDefault(c => c.ConnectedNode.Name == foundRoutes[i + 1].Name);
+				var edges = foundRoutes[i].Connections.Where(c => c.ConnectedNode.Name == foundRoutes[i + 1].Name).ToList();
+				var edge = request.TransportType == TransportType.Fastest
+					? edges.OrderBy(e => e.Time).FirstOrDefault()
+					: edges.OrderBy(e => e.Price).FirstOrDefault();
 				if (edge == null) continue;
 				result.Add(new RouteResponseModel
 				{
