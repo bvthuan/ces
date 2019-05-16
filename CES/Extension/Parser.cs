@@ -13,7 +13,7 @@ namespace CES.Extension
 			return Nodes.First(n => n.Name == name);
 		}
 
-		public static List<Node> Parse(this List<RouteModel> Routes, TransportType TransportType, decimal price)
+		public static List<Node> Parse(this List<RouteModel> Routes, TransportType TransportType)
 		{
 			var Nodes = new List<Node>();
 			foreach (var item in Routes)
@@ -34,8 +34,8 @@ namespace CES.Extension
 					{
 						Cost = TransportType == TransportType.Fastest 
 							? edge.TotalHours
-							: edge.NumberOfSegments * price,
-						Price = edge.NumberOfSegments * price,
+							: edge.Price,
+						Price = edge.Price,
 						Time = edge.TotalHours,
 						ConnectedNode = Nodes.First(n => n.Name == edge.Destination),
 						Transportation = edge.Transportation

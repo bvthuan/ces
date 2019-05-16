@@ -50,5 +50,6 @@ namespace CES.Models.FindPath
 		public int NumberOfSegments { get; set; }
 		public int TotalHours { get; set; }
 		public Transportation Transportation { get; set; }
+		public decimal Price { get; set; }
 	}
 }
