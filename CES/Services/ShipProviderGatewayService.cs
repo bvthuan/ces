@@ -4,8 +4,7 @@ using CES.Model.Response;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
-using System.Linq;
-using CES.Constant;
+
 
 namespace CES.Services
 {
@@ -13,21 +12,15 @@ namespace CES.Services
      * This class should be used for communicating external service only,
      * and the communication between Telstar with the 3rd party service can be achieved 
      * by HTTP request
-     **/ 
-	public class AirProviderGatewayService : IAirProvider
-	{
+     **/
+    public class ShipProviderGatewayService : IShipProvider
+    {
         // db context
         private CesContext _context;
 
-        public AirProviderGatewayService(CesContext context)
+        public ShipProviderGatewayService(CesContext context)
         {
             _context = context;
-        }
-
-        private string GetEndPoint()
-        {
-            var endpoint = _context.RouteConfigurations.FirstOrDefault(c => c.Key == AppConstant.SHIP_PROVIDER_URL);
-            return endpoint.Value;
         }
 
         public List<RouteResponseModel> FindPath(RouteRequestModel request)
