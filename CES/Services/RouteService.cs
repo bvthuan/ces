@@ -11,6 +11,24 @@ namespace CES.Services
 {
 	public class RouteService : IRoute
 	{
+        // external service
+        private readonly IAirProvider _airProvider;
+        private readonly IShipProvider _shipProvider;
+
+        // db context
+        private CesContext _context;
+
+        public RouteService(
+            CesContext context,
+            IAirProvider airProvider,
+            IShipProvider shipProvider
+            )
+        {
+            _context = context;
+            _airProvider = airProvider;
+            _shipProvider = shipProvider;
+        }
+
         //@TODO: Viet will implement FindPath
         //===================================
 
