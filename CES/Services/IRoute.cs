@@ -11,6 +11,6 @@ namespace CES.Services
 {
 	public interface IRoute
 	{
-		List<RouteResponseModel> FindRoute(RouteRequestModel request);
+		Task<List<RouteResponseModel>> FindRoute(RouteRequestModel request);
 	}
 }
