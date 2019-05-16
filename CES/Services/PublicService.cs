@@ -1,6 +1,7 @@
 ﻿using CES.Constant;
 using CES.Database.Context;
 using CES.Database.Models;
+using CES.Enums;
 using CES.Extension;
 using CES.Model;
 using Microsoft.EntityFrameworkCore;
@@ -29,7 +30,7 @@ namespace CES.Services
 
             foreach (var config in routeConfigurations)
             {
-                if (AppConstant.HOUR_BETWEEN_TWO_SEGMENTS.Equals(config.Key))
+                if (AppConstant.TIME_BETWEEN_TWO_SEGMENTS.Equals(config.Key))
                 {
                     hourBetweenTwoSegments = int.Parse(config.Value);
                 }
@@ -41,8 +42,11 @@ namespace CES.Services
 
             foreach (var route in routes)
             {
-                PublicRouteModel publicRouteModel = new PublicRouteModel() { From_city = route.Start, To_city = route.Destination, Hours = hourBetweenTwoSegments * route.NumberOfSegments, Segment = route.NumberOfSegments };
-                publicRoutes.Add(publicRouteModel);
+                if(route.Transportation == (int)Transportation.Car)
+                {
+                    PublicRouteModel publicRouteModel = new PublicRouteModel() { From_city = route.Start, To_city = route.Destination, Hours = hourBetweenTwoSegments * route.NumberOfSegments, Segment = route.NumberOfSegments };
+                    publicRoutes.Add(publicRouteModel);
+                }
             }
 
             return publicRoutes;

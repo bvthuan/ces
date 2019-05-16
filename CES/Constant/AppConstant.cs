@@ -9,7 +9,7 @@ namespace CES.Constant
     {
         public static String PRICE_BETWEEN_TWO_SEGMENTS = "PriceBetweenTwoSegments";
 
-        public static String HOUR_BETWEEN_TWO_SEGMENTS = "HourBetweenTwoSegments";
+        public static String TIME_BETWEEN_TWO_SEGMENTS = "TimeBetweenTwoSegments";
 
         public static String MAXIUM_WEIGHT = "MaxiumWeight";
 
