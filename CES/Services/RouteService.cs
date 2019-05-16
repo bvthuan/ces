@@ -60,7 +60,7 @@ namespace CES.Services
 			}
 
 
-			var price = 0; //use second External API to get them
+			var price = Int32.Parse(config.Value); //use second External API to get them
 			var nodes = routes.Parse(request.TransportType, price);
 
 
@@ -68,14 +68,6 @@ namespace CES.Services
 			solution.Start = nodes.GetNode(request.Start);
 			var foundRoutes = solution.GetShortestPathDijkstra(request.Destination);
 			var result = new List<RouteResponseModel>();
-
-			foreach (var item in foundRoutes)
-			{
-				result.Add(new RouteResponseModel
-				{
-					Start = item.Name,
-				});
-			}
 
 			for (int i = 0; i < foundRoutes.Count - 1; i++)
 			{

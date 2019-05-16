@@ -11,7 +11,7 @@ namespace CES.Models.FindPath
 		public Guid Id { get; set; }
 		public string Name { get; set; }
 		public List<Edge> Connections { get; set; } = new List<Edge>();
-		public decimal MinCostToStart { get; set; }
+		public decimal? MinCostToStart { get; set; }
 		public Node NearestToStart { get; set; }
 		
 		public bool Visited { get; set; }
