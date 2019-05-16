@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace CES.Constant
 {
-    public class AppConstant
+    public static class AppConstant
     {
         public static String PRICE_BETWEEN_TWO_SEGMENTS = "PriceBetweenTwoSegments";
 
