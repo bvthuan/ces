@@ -32,7 +32,7 @@ namespace CES.Services
 
             foreach (var config in routeConfigurations)
             {
-                if (AppConstant.HOUR_BETWEEN_TWO_SEGMENTS.Equals(config.Key))
+                if (AppConstant.TIME_BETWEEN_TWO_SEGMENTS.Equals(config.Key))
                 {
                     hourBetweenTwoSegments = int.Parse(config.Value);
                 }
