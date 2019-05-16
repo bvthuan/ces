@@ -6,7 +6,7 @@ namespace CES.Model
 {
 	public class PublicRouteResponsetModel
 	{
-		public int price { get; set; }
+		public decimal price { get; set; }
 
 		public int status { get; set; }
 
