@@ -51,7 +51,7 @@ namespace CES.Services
 			var requestModel = new List<PublicRouteRequestModel>() {
 				new PublicRouteRequestModel
 				{
-					goodsType = request.PackageType,
+					goods_type = request.PackageType,
 					height = request.PackageSizes.Height,
 					length = request.PackageSizes.Length,
 					weight = request.PackageSizes.Weight,
@@ -60,7 +60,7 @@ namespace CES.Services
 			//Get all routes from database
 			var airPrice = await _airProvider.GetPrice(requestModel);
 
-			var shipPrice = await _shipProvider.GetPrice(requestModel);
+			var shipPrice = 0;// await _shipProvider.GetPrice(requestModel);
 			var routeData = await _context.Routes.ToListAsync();
 
 			if (airPrice < 0)
