@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using CES.Enums;
 using CES.Model.Request;
 using CES.Model.Response;
+using CES.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CES.Controllers
@@ -13,6 +14,12 @@ namespace CES.Controllers
     [ApiController]
     public class RoutesController : ControllerBase
     {
+        private readonly IRoute _route;
+
+        public RoutesController(IRoute routeService)
+        {
+            _route = routeService;
+        }
         // POST api/routes
         [HttpPost]
         public IActionResult PostRoute([FromBody] RouteRequestModel route)
