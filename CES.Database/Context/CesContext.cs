@@ -19,7 +19,9 @@ namespace CES.Database.Context
 
 		public DbSet<RouteConfiguration> RouteConfigurations { get; set; }
 
-		protected override void OnModelCreating(ModelBuilder modelBuilder)
+        public DbSet<GoodType> GoodTypes { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
 			modelBuilder.Entity<City>().HasData(new City { Id = 1, Code = "DKO", Name = "DE KANARISKE OER" });
 			modelBuilder.Entity<City>().HasData(new City { Id = 2, Code = "TUN", Name = "TUNIS'" });
@@ -105,7 +107,7 @@ namespace CES.Database.Context
             modelBuilder.Entity<Route>().HasData(new Route { Id = 47, Start = "DAR", Destination = "SLA", NumberOfSegments = 7 });
             modelBuilder.Entity<Route>().HasData(new Route { Id = 48, Start = "CON", Destination = "LUA", NumberOfSegments = 3 });
             modelBuilder.Entity<Route>().HasData(new Route { Id = 49, Start = "CON", Destination = "DAR", NumberOfSegments = 6 });
-            modelBuilder.Entity<Route>().HasData(new Route { Id = 50, Start = "CON", Destination = "WAI", NumberOfSegments = 6 });
+            modelBuilder.Entity<Route>().HasData(new Route { Id = 50, Start = "CON", Destination = "WAD", NumberOfSegments = 6 });
             modelBuilder.Entity<Route>().HasData(new Route { Id = 51, Start = "CON", Destination = "SLA", NumberOfSegments = 5 });
             modelBuilder.Entity<Route>().HasData(new Route { Id = 52, Start = "OMD", Destination = "CAI", NumberOfSegments = 4 });
             modelBuilder.Entity<Route>().HasData(new Route { Id = 53, Start = "OMD", Destination = "DAR", NumberOfSegments = 3 });
@@ -139,7 +141,29 @@ namespace CES.Database.Context
             modelBuilder.Entity<Route>().HasData(new Route { Id = 81, Start = "DRA", Destination = "VIF", NumberOfSegments = 3 });
             modelBuilder.Entity<Route>().HasData(new Route { Id = 82, Start = "DRA", Destination = "MOC", NumberOfSegments = 4 });
             modelBuilder.Entity<Route>().HasData(new Route { Id = 83, Start = "DRA", Destination = "LUA", NumberOfSegments = 11 });
+
+            // missing Route Data
+            modelBuilder.Entity<Route>().HasData(new Route { Id = 84, Start = "HVA", Destination = "KAP", NumberOfSegments = 4 });
+
+            // insert RouteConfiguration
+            modelBuilder.Entity<RouteConfiguration>().HasData(new RouteConfiguration { Id = 1, Key = "PriceBetweenTwoSegments", Value = "3"});
+            modelBuilder.Entity<RouteConfiguration>().HasData(new RouteConfiguration { Id = 2, Key = "MaxiumWeight", Value = "40" });
+            modelBuilder.Entity<RouteConfiguration>().HasData(new RouteConfiguration { Id = 3, Key = "ShipProviderURL", Value = "" });
+            modelBuilder.Entity<RouteConfiguration>().HasData(new RouteConfiguration { Id = 4, Key = "AirProviderURL", Value = "" });
+
+            //modelBuilder.Entity<GoodType>().HasData(new GoodType { Id = 1, Code = "AirProviderURL", Name = "" });
+
+            modelBuilder.Entity<GoodType>().HasData(new GoodType { Id = 1, Code = "RED", Name = "Recorded Delivery" });
+            modelBuilder.Entity<GoodType>().HasData(new GoodType { Id = 2, Code = "WEA", Name = "Weapons" });
+            modelBuilder.Entity<GoodType>().HasData(new GoodType { Id = 3, Code = "LIA", Name = "Live Animals" });
+            modelBuilder.Entity<GoodType>().HasData(new GoodType { Id = 4, Code = "CAP", Name = "Cautious Parcels" });
+            modelBuilder.Entity<GoodType>().HasData(new GoodType { Id = 5, Code = "REF", Name = "Refrigerated Goods" });
+
+
+
+
+
         }
 
-	}
+    }
 }
