@@ -66,13 +66,9 @@ namespace CES
 
 			app.UseHttpsRedirection();
 			app.UseAuthentication();
-			app.UseHttpsRedirection();
 			app.UseCors("CorsPolicy");
-			//app.UseForwardedHeaders(new ForwardedHeadersOptions
-			//{
-			//	ForwardedHeaders = ForwardedHeaders.All
-			//});			
-			
+
+			app.UseFileServer();
 			app.UseMvc();
 		}
 

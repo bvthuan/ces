@@ -13,7 +13,6 @@ namespace CES.Extension
 			{
 				options.AddPolicy("CorsPolicy",
 					builder => builder
-					.WithOrigins("https://localhost:44301")
 					.AllowAnyOrigin()
 					.AllowAnyMethod()
 					.AllowAnyHeader()

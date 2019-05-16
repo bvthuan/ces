@@ -68,6 +68,29 @@ namespace CES.Database.Migrations
                     );
                 });
 
+            modelBuilder.Entity("CES.Database.Models.GoodType", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Code");
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("GoodTypes");
+
+                    b.HasData(
+                        new { Id = 1L, Code = "RED", Name = "Recorded Delivery" },
+                        new { Id = 2L, Code = "WEA", Name = "Weapons" },
+                        new { Id = 3L, Code = "LIA", Name = "Live Animals" },
+                        new { Id = 4L, Code = "CAP", Name = "Cautious Parcels" },
+                        new { Id = 5L, Code = "REF", Name = "Refrigerated Goods" }
+                    );
+                });
+
             modelBuilder.Entity("CES.Database.Models.Route", b =>
                 {
                     b.Property<long>("Id")
@@ -83,6 +106,93 @@ namespace CES.Database.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Routes");
+
+                    b.HasData(
+                        new { Id = 1L, Destination = "TRI", NumberOfSegments = 3, Start = "TUN" },
+                        new { Id = 2L, Destination = "TAN", NumberOfSegments = 5, Start = "TUN" },
+                        new { Id = 3L, Destination = "ADA", NumberOfSegments = 3, Start = "SUA" },
+                        new { Id = 4L, Destination = "DAR", NumberOfSegments = 4, Start = "SUA" },
+                        new { Id = 5L, Destination = "TUN", NumberOfSegments = 5, Start = "TAN" },
+                        new { Id = 6L, Destination = "SAH", NumberOfSegments = 5, Start = "TAN" },
+                        new { Id = 7L, Destination = "MAR", NumberOfSegments = 2, Start = "TAN" },
+                        new { Id = 8L, Destination = "OMD", NumberOfSegments = 4, Start = "CAI" },
+                        new { Id = 9L, Destination = "ADA", NumberOfSegments = 3, Start = "KAG" },
+                        new { Id = 10L, Destination = "ZAN", NumberOfSegments = 6, Start = "KAG" },
+                        new { Id = 11L, Destination = "ZAN", NumberOfSegments = 3, Start = "MOC" },
+                        new { Id = 12L, Destination = "VIS", NumberOfSegments = 6, Start = "MOC" },
+                        new { Id = 13L, Destination = "DRA", NumberOfSegments = 4, Start = "MOC" },
+                        new { Id = 14L, Destination = "VIF", NumberOfSegments = 5, Start = "MOC" },
+                        new { Id = 15L, Destination = "LUA", NumberOfSegments = 10, Start = "MOC" },
+                        new { Id = 16L, Destination = "HVA", NumberOfSegments = 4, Start = "KAP" },
+                        new { Id = 17L, Destination = "VIF", NumberOfSegments = 4, Start = "HVA" },
+                        new { Id = 18L, Destination = "CON", NumberOfSegments = 5, Start = "SLA" },
+                        new { Id = 19L, Destination = "DAR", NumberOfSegments = 7, Start = "SLA" },
+                        new { Id = 20L, Destination = "WAD", NumberOfSegments = 7, Start = "SLA" },
+                        new { Id = 21L, Destination = "TIM", NumberOfSegments = 5, Start = "SLA" },
+                        new { Id = 22L, Destination = "TIM", NumberOfSegments = 4, Start = "GUL" },
+                        new { Id = 23L, Destination = "SIL", NumberOfSegments = 5, Start = "GUL" },
+                        new { Id = 24L, Destination = "GUL", NumberOfSegments = 5, Start = "SIL" },
+                        new { Id = 25L, Destination = "TIM", NumberOfSegments = 5, Start = "SIL" },
+                        new { Id = 26L, Destination = "DAK", NumberOfSegments = 4, Start = "SIL" },
+                        new { Id = 27L, Destination = "SIL", NumberOfSegments = 4, Start = "DAK" },
+                        new { Id = 28L, Destination = "MAR", NumberOfSegments = 8, Start = "DAK" },
+                        new { Id = 29L, Destination = "DAK", NumberOfSegments = 8, Start = "MAR" },
+                        new { Id = 30L, Destination = "TAN", NumberOfSegments = 2, Start = "MAR" },
+                        new { Id = 31L, Destination = "SAH", NumberOfSegments = 5, Start = "MAR" },
+                        new { Id = 32L, Destination = "TAN", NumberOfSegments = 5, Start = "SAH" },
+                        new { Id = 33L, Destination = "MAR", NumberOfSegments = 5, Start = "SAH" },
+                        new { Id = 34L, Destination = "DAR", NumberOfSegments = 8, Start = "SAH" },
+                        new { Id = 35L, Destination = "SLA", NumberOfSegments = 5, Start = "TIM" },
+                        new { Id = 36L, Destination = "GUL", NumberOfSegments = 4, Start = "TIM" },
+                        new { Id = 37L, Destination = "SIL", NumberOfSegments = 5, Start = "TIM" },
+                        new { Id = 38L, Destination = "DAR", NumberOfSegments = 4, Start = "WAD" },
+                        new { Id = 39L, Destination = "CON", NumberOfSegments = 6, Start = "WAD" },
+                        new { Id = 40L, Destination = "SLA", NumberOfSegments = 7, Start = "WAD" },
+                        new { Id = 41L, Destination = "BAG", NumberOfSegments = 2, Start = "DAR" },
+                        new { Id = 42L, Destination = "SUA", NumberOfSegments = 4, Start = "DAR" },
+                        new { Id = 43L, Destination = "OMD", NumberOfSegments = 3, Start = "DAR" },
+                        new { Id = 44L, Destination = "SAH", NumberOfSegments = 8, Start = "DAR" },
+                        new { Id = 45L, Destination = "WAD", NumberOfSegments = 4, Start = "DAR" },
+                        new { Id = 46L, Destination = "CON", NumberOfSegments = 6, Start = "DAR" },
+                        new { Id = 47L, Destination = "SLA", NumberOfSegments = 7, Start = "DAR" },
+                        new { Id = 48L, Destination = "LUA", NumberOfSegments = 3, Start = "CON" },
+                        new { Id = 49L, Destination = "DAR", NumberOfSegments = 6, Start = "CON" },
+                        new { Id = 50L, Destination = "WAD", NumberOfSegments = 6, Start = "CON" },
+                        new { Id = 51L, Destination = "SLA", NumberOfSegments = 5, Start = "CON" },
+                        new { Id = 52L, Destination = "CAI", NumberOfSegments = 4, Start = "OMD" },
+                        new { Id = 53L, Destination = "DAR", NumberOfSegments = 3, Start = "OMD" },
+                        new { Id = 54L, Destination = "TRI", NumberOfSegments = 6, Start = "OMD" },
+                        new { Id = 55L, Destination = "TUN", NumberOfSegments = 3, Start = "TRI" },
+                        new { Id = 56L, Destination = "OMD", NumberOfSegments = 6, Start = "TRI" },
+                        new { Id = 57L, Destination = "CON", NumberOfSegments = 3, Start = "LUA" },
+                        new { Id = 58L, Destination = "KAB", NumberOfSegments = 0, Start = "LUA" },
+                        new { Id = 59L, Destination = "MOC", NumberOfSegments = 10, Start = "LUA" },
+                        new { Id = 60L, Destination = "VIF", NumberOfSegments = 11, Start = "LUA" },
+                        new { Id = 61L, Destination = "DRA", NumberOfSegments = 11, Start = "LUA" },
+                        new { Id = 62L, Destination = "VIS", NumberOfSegments = 4, Start = "KAB" },
+                        new { Id = 63L, Destination = "LUA", NumberOfSegments = 4, Start = "KAB" },
+                        new { Id = 64L, Destination = "HVA", NumberOfSegments = 4, Start = "VIF" },
+                        new { Id = 65L, Destination = "DRA", NumberOfSegments = 3, Start = "VIF" },
+                        new { Id = 66L, Destination = "MOC", NumberOfSegments = 5, Start = "VIF" },
+                        new { Id = 67L, Destination = "LUA", NumberOfSegments = 11, Start = "VIF" },
+                        new { Id = 68L, Destination = "VIS", NumberOfSegments = 2, Start = "BAG" },
+                        new { Id = 69L, Destination = "DAR", NumberOfSegments = 2, Start = "BAG" },
+                        new { Id = 70L, Destination = "VIS", NumberOfSegments = 3, Start = "ADA" },
+                        new { Id = 71L, Destination = "KAG", NumberOfSegments = 3, Start = "ADA" },
+                        new { Id = 72L, Destination = "SUA", NumberOfSegments = 3, Start = "ADA" },
+                        new { Id = 73L, Destination = "KAB", NumberOfSegments = 4, Start = "VIS" },
+                        new { Id = 74L, Destination = "BAG", NumberOfSegments = 2, Start = "VIS" },
+                        new { Id = 75L, Destination = "ADA", NumberOfSegments = 3, Start = "VIS" },
+                        new { Id = 76L, Destination = "MOC", NumberOfSegments = 6, Start = "VIS" },
+                        new { Id = 77L, Destination = "ZAN", NumberOfSegments = 5, Start = "VIS" },
+                        new { Id = 78L, Destination = "KAG", NumberOfSegments = 6, Start = "ZAN" },
+                        new { Id = 79L, Destination = "MOC", NumberOfSegments = 3, Start = "ZAN" },
+                        new { Id = 80L, Destination = "VIS", NumberOfSegments = 5, Start = "ZAN" },
+                        new { Id = 81L, Destination = "VIF", NumberOfSegments = 3, Start = "DRA" },
+                        new { Id = 82L, Destination = "MOC", NumberOfSegments = 4, Start = "DRA" },
+                        new { Id = 83L, Destination = "LUA", NumberOfSegments = 11, Start = "DRA" },
+                        new { Id = 84L, Destination = "KAP", NumberOfSegments = 4, Start = "HVA" }
+                    );
                 });
 
             modelBuilder.Entity("CES.Database.Models.RouteConfiguration", b =>
@@ -91,13 +201,20 @@ namespace CES.Database.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("MaxiumWeight");
+                    b.Property<string>("Key");
 
-                    b.Property<string>("PriceBetweenTwoSegments");
+                    b.Property<string>("Value");
 
                     b.HasKey("Id");
 
                     b.ToTable("RouteConfigurations");
+
+                    b.HasData(
+                        new { Id = 1L, Key = "PriceBetweenTwoSegments", Value = "3" },
+                        new { Id = 2L, Key = "MaxiumWeight", Value = "40" },
+                        new { Id = 3L, Key = "ShipProviderURL", Value = "" },
+                        new { Id = 4L, Key = "AirProviderURL", Value = "" }
+                    );
                 });
 
             modelBuilder.Entity("CES.Database.Models.User", b =>
