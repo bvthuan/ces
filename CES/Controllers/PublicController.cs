@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CES.Database.Context;
 using CES.Database.Models;
+using CES.Model;
 using CES.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,21 +15,21 @@ namespace CES.Controllers
     [ApiController]
     public class PublicController : ControllerBase
     {
-		private readonly IRouteConfiguration _routeConfigurationService;
+		private readonly IPublicService _publicService;
 
 		private readonly CesContext _context;
 
-		public PublicController(CesContext context, IRouteConfiguration routeConfigurationService)
+		public PublicController(CesContext context, IPublicService publicService)
 		{
 			_context = context;
-            _routeConfigurationService = routeConfigurationService;
+            _publicService = publicService;
 		}
 
-		// GET api/values
+		
 		[HttpGet]
-        public async Task<ActionResult<List<RouteConfiguration>>> RouteConfiguration()
+        public  ActionResult<List<PublicRouteModel>> PublicRoutes()
         {
-			return await _routeConfigurationService.RouteConfigurations();
+			return  _publicService.PublicRoutes();
         }
         
     }
