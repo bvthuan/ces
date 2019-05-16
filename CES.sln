@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CES", "CES\CES.csproj", "{D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CES.Database", "CES.Database\CES.Database.csproj", "{14A737E5-DD5F-4C55-BDA0-3B4BA5F2E642}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject1", "UnitTestProject1\UnitTestProject1.csproj", "{C1182D94-9EA6-42F1-9811-03D9E59C195C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CES.Tests", "UnitTestProject1\CES.Tests.csproj", "{C1182D94-9EA6-42F1-9811-03D9E59C195C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
