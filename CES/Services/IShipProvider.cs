@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace CES.Services
 {
+	public interface IProvider {
+
+	}
 	public interface IShipProvider
 	{
 		// methods below will be used for communicating to external service

@@ -12,13 +12,13 @@ namespace CES.Controllers
 
 	[Route("api/[controller]")]
     [ApiController]
-    public class GoodTypeController : ControllerBase
+    public class GoodTypesController : ControllerBase
     {
 		private readonly IGoodType _goodType;
 
 		private readonly CesContext _context;
 
-		public GoodTypeController(CesContext context, IGoodType goodType)
+		public GoodTypesController(CesContext context, IGoodType goodType)
 		{
 			_context = context;
             _goodType = goodType;

@@ -14,7 +14,7 @@ namespace CES.Services
      * and the communication between Telstar with the 3rd party service can be achieved 
      * by HTTP request
      **/ 
-	public class AirProviderGatewayService : IAirProvider
+	public class AirProviderGatewayService : IProvider
 	{
         // db context
         private CesContext _context;
